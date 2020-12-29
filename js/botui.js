@@ -53,7 +53,12 @@ function bot_ui_ini() {
                 delay: 600,
                 content: "😘"
             }).then(function () {
-                secondpart()
+                botui.message.add({
+                    delay: 1500,
+                    content: "曾用ID: Char0n 🙄"
+                }).then(function () {
+                	secondpart()
+            	})
             })
         },
         end = function () {
