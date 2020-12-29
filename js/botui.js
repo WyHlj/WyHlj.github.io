@@ -83,9 +83,8 @@ function bot_ui_ini() {
                                     delay: 1800,
                                     content: "希望有一天能够成为大佬"
                                 })
-                                })
                             })
                         })
                     })
-            	},
-}
+                })
+            }
