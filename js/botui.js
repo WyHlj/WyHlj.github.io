@@ -87,5 +87,5 @@ function bot_ui_ini() {
                         })
                     })
                 })
-            })
+            }
 	}
