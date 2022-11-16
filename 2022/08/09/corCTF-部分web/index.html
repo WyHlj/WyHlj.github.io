@@ -1,5 +1,7 @@
 <!DOCTYPE html><html class="appearance-auto" lang="zh-CN"><head><meta charset="UTF-8"><title>corCTF-部分web</title><meta name="description" content="A Web dog in CTF, interested in geek hacking."><meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, initial-scale=1"><!-- Google Analytics --><!-- End Google Analytics -->
-<!-- Baidu Analytics --><!-- End Baidu Analytics --><link rel="icon" href="/images/favicon.png"><link rel="stylesheet" href="/style/common/bulma.css"><link rel="stylesheet" href="/style/base.css"><link rel="stylesheet" href="/style/common/helper.css"><script src="/js/common.js"></script><link rel="stylesheet" href="/style/post.css"><link rel="stylesheet" href="/style/themes/highlight-theme-light.css"><script src="/js/highlight.pack.js"></script><meta name="description" content="corCTF 部分web记录jsonquizquiz.js
+<!-- Baidu Analytics --><!-- End Baidu Analytics --><link rel="icon" href="/images/favicon.png"><link rel="stylesheet" href="/style/common/bulma.css"><link rel="stylesheet" href="/style/base.css"><link rel="stylesheet" href="/style/common/helper.css"><script src="/js/common.js"></script><link rel="stylesheet" href="/style/post.css"><link rel="stylesheet" href="/style/themes/highlight-theme-light.css"><script src="/js/highlight.pack.js"></script><meta name="description" content="corCTF 部分web记录
+jsonquiz
+quiz.js
     setTimeout(() =&amp;gt; {
         let score = 0;
         fetch(&quot;/submit&quot;, {
@@ -11,214 +13,248 @@
         })
         .then(r =&amp;gt; r.json())
         .then(j =&amp;gt; {
-            if (.."><meta name="generator" content="Hexo 6.2.0">
+            if.."><meta name="generator" content="Hexo 6.2.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="alternate" href="/atom.xml" title="fl3cha2o's Blog" type="application/atom+xml">
-</head><body class="is-flex is-flex-direction-column"><header class="header-widget is-flex-shrink-0 is-hidden-mobile"><div class="container is-fullhd is-flex is-justify-content-space-between is-align-items-center is-full-height"><section class="is-hidden-mobile is-flex-shrink-0"><h2><a href="/">fl3cha2o's blog</a></h2></section><h3 class="is-hidden-mobile is-family-serif is-full-height is-flex is-align-items-center is-flex-shrink-0"><div class="is-full-height" id="postTopic"><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">corCTF-部分web</p><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">点击返回顶部</p></div></h3><aside class="is-flex-shrink-0"><h3 class="is-inline-block"><a href="/">首页</a></h3><h3 class="is-inline-block"><a href="/about">关于</a></h3><h3 class="is-inline-block"><a href="/archives">归档</a></h3></aside></div></header><header class="is-flex header-widget is-flex-shrink-0 is-align-items-center is-justify-content-center is-hidden-tablet"><h3 class="is-inline-block"><a href="/">首页</a></h3><h3 class="is-inline-block"><a href="/about">关于</a></h3><h3 class="is-inline-block"><a href="/archives">归档</a></h3></header><main><main class="container is-max-widescreen content section post-page pt-4 px-4"><div class="columns is-flex-desktop is-justify-content-center is-flex-direction-row-reverse"><div class="column is-3 is-hidden-mobile"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#corCTF-%E9%83%A8%E5%88%86web%E8%AE%B0%E5%BD%95"><span class="toc-text">corCTF 部分web记录</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#jsonquiz"><span class="toc-text">jsonquiz</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#msfrog-generator"><span class="toc-text">msfrog-generator</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#simple-waf"><span class="toc-text">simple waf</span></a></li></ol></li></ol></div><div class="column is-9"><header class="my-4"><a href="/tags/CTF"><i class="tag post-item-tag">CTF</i></a></header><h1 class="mt-0 mb-1 is-family-serif" id="postTitle">corCTF-部分web</h1><time class="has-text-grey" datetime="2022-08-09T07:12:14.000Z">2022-08-09</time><article class="mt-2 post-content"><h1 id="corCTF-部分web记录"><a href="#corCTF-部分web记录" class="headerlink" title="corCTF 部分web记录"></a>corCTF 部分web记录</h1><h2 id="jsonquiz"><a href="#jsonquiz" class="headerlink" title="jsonquiz"></a>jsonquiz</h2><p>quiz.js</p>
-<pre><code class="js">    setTimeout(() =&gt; {
-        let score = 0;
-        fetch("/submit", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/x-www-form-urlencoded"
-            },
-            body: "score=" + score
-        })
-        .then(r =&gt; r.json())
-        .then(j =&gt; {
-            if (j.pass) {
-                $("#reward").innerText = j.flag;
-                $("#pass").style.display = "block";
-            }
-            else {
-                $("#fail").style.display = "block";
-            }
-        });
-    }, 1250);
-</code></pre>
+</head><body class="is-flex is-flex-direction-column"><header class="header-widget is-flex-shrink-0 is-hidden-mobile"><div class="container is-fullhd is-flex is-justify-content-space-between is-align-items-center is-full-height"><section class="is-hidden-mobile is-flex-shrink-0"><h2><a href="/">fl3cha2o's blog</a></h2></section><h3 class="is-hidden-mobile is-family-serif is-full-height is-flex is-align-items-center is-flex-shrink-0"><div class="is-full-height" id="postTopic"><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">corCTF-部分web</p><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">点击返回顶部</p></div></h3><aside class="is-flex-shrink-0"><h3 class="is-inline-block"><a href="/">首页</a></h3><h3 class="is-inline-block"><a href="/about">关于</a></h3><h3 class="is-inline-block"><a href="/archives">归档</a></h3></aside></div></header><header class="is-flex header-widget is-flex-shrink-0 is-align-items-center is-justify-content-center is-hidden-tablet"><h3 class="is-inline-block"><a href="/">首页</a></h3><h3 class="is-inline-block"><a href="/about">关于</a></h3><h3 class="is-inline-block"><a href="/archives">归档</a></h3></header><main><main class="container is-max-widescreen content section post-page pt-4 px-4"><div class="columns is-flex-desktop is-justify-content-center is-flex-direction-row-reverse"><div class="column is-3 is-hidden-mobile"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#corctf-%E9%83%A8%E5%88%86web%E8%AE%B0%E5%BD%95"><span class="toc-text">corCTF 部分web记录</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#jsonquiz"><span class="toc-text">jsonquiz</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#msfrog-generator"><span class="toc-text">msfrog-generator</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#simple-waf"><span class="toc-text">simple waf</span></a></li></ol></li></ol></div><div class="column is-9"><header class="my-4"><a href="/tags/CTF"><i class="tag post-item-tag">CTF</i></a></header><h1 class="mt-0 mb-1 is-family-serif" id="postTitle">corCTF-部分web</h1><time class="has-text-grey" datetime="2022-08-09T07:12:14.000Z">2022-08-09</time><article class="mt-2 post-content"><h1 id="corctf-部分web记录">corCTF 部分web记录</h1>
+<h2 id="jsonquiz">jsonquiz</h2>
+<p>quiz.js</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>    <span class="pp">setTimeout</span>(() <span class="kw">=&gt;</span> {</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>        <span class="kw">let</span> score <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>        <span class="fu">fetch</span>(<span class="st">"/submit"</span><span class="op">,</span> {</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>            <span class="dt">method</span><span class="op">:</span> <span class="st">"POST"</span><span class="op">,</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>            <span class="dt">headers</span><span class="op">:</span> {</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>                <span class="st">"Content-Type"</span><span class="op">:</span> <span class="st">"application/x-www-form-urlencoded"</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>            }<span class="op">,</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>            <span class="dt">body</span><span class="op">:</span> <span class="st">"score="</span> <span class="op">+</span> score</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>        })</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span><span class="fu">then</span>(r <span class="kw">=&gt;</span> r<span class="op">.</span><span class="fu">json</span>())</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span><span class="fu">then</span>(j <span class="kw">=&gt;</span> {</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> (j<span class="op">.</span><span class="at">pass</span>) {</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>                <span class="fu">$</span>(<span class="st">"#reward"</span>)<span class="op">.</span><span class="at">innerText</span> <span class="op">=</span> j<span class="op">.</span><span class="at">flag</span><span class="op">;</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>                <span class="fu">$</span>(<span class="st">"#pass"</span>)<span class="op">.</span><span class="at">style</span><span class="op">.</span><span class="at">display</span> <span class="op">=</span> <span class="st">"block"</span><span class="op">;</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>            }</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>            <span class="cf">else</span> {</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>                <span class="fu">$</span>(<span class="st">"#fail"</span>)<span class="op">.</span><span class="at">style</span><span class="op">.</span><span class="at">display</span> <span class="op">=</span> <span class="st">"block"</span><span class="op">;</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>            }</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>        })<span class="op">;</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>    }<span class="op">,</span> <span class="dv">1250</span>)<span class="op">;</span></span></code></pre></div>
 <p>直接请求就行</p>
-<p><img src="/2022/08/09/corCTF-%E9%83%A8%E5%88%86web/image-20220808150155457.png" alt="image-20220808150155457"></p>
-<h2 id="msfrog-generator"><a href="#msfrog-generator" class="headerlink" title="msfrog-generator"></a>msfrog-generator</h2><pre><code class="js">    let jsonData = [];
-    placedItems.forEach((item) =&gt; {
-      jsonData.push({ type: item.type, pos: item.pos });
-    });
-
-    try {
-      let response = await fetch("/api/generate", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(jsonData),
-      });
-      if (response.status !== 200)
-        throw `Unexpected response: ${response.status}`;
-      response = await response.json();
-      if (!response.msfrog) throw "Empty response, the heck?";
-      toast.success("Enjoy your MsFrog :D");
-      triggerBase64Download(
-        `data:image/png;base64,${response.msfrog}`,
-        "msfrog"
-      );
-    } catch (e) {
-      toast.error(`Sadge, something went wrong: ${e}`);
-    }
-</code></pre>
+<figure>
+<img src="image-20220808150155457.png" alt="image-20220808150155457">
+<figcaption aria-hidden="true">image-20220808150155457</figcaption>
+</figure>
+<h2 id="msfrog-generator">msfrog-generator</h2>
+<div class="sourceCode" id="cb2"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> jsonData <span class="op">=</span> []<span class="op">;</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    placedItems<span class="op">.</span><span class="fu">forEach</span>((item) <span class="kw">=&gt;</span> {</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>      jsonData<span class="op">.</span><span class="fu">push</span>({ <span class="dt">type</span><span class="op">:</span> item<span class="op">.</span><span class="at">type</span><span class="op">,</span> <span class="dt">pos</span><span class="op">:</span> item<span class="op">.</span><span class="at">pos</span> })<span class="op">;</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    })<span class="op">;</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span> {</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>      <span class="kw">let</span> response <span class="op">=</span> <span class="cf">await</span> <span class="fu">fetch</span>(<span class="st">"/api/generate"</span><span class="op">,</span> {</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>        <span class="dt">method</span><span class="op">:</span> <span class="st">"POST"</span><span class="op">,</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>        <span class="dt">headers</span><span class="op">:</span> {</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>          <span class="st">"Content-Type"</span><span class="op">:</span> <span class="st">"application/json"</span><span class="op">,</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>        }<span class="op">,</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>        <span class="dt">body</span><span class="op">:</span> <span class="bu">JSON</span><span class="op">.</span><span class="fu">stringify</span>(jsonData)<span class="op">,</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>      })<span class="op">;</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>      <span class="cf">if</span> (response<span class="op">.</span><span class="at">status</span> <span class="op">!==</span> <span class="dv">200</span>)</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>        <span class="cf">throw</span> <span class="vs">`Unexpected response: </span><span class="sc">${</span>response<span class="op">.</span><span class="at">status</span><span class="sc">}</span><span class="vs">`</span><span class="op">;</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>      response <span class="op">=</span> <span class="cf">await</span> response<span class="op">.</span><span class="fu">json</span>()<span class="op">;</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>      <span class="cf">if</span> (<span class="op">!</span>response<span class="op">.</span><span class="at">msfrog</span>) <span class="cf">throw</span> <span class="st">"Empty response, the heck?"</span><span class="op">;</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>      toast<span class="op">.</span><span class="fu">success</span>(<span class="st">"Enjoy your MsFrog :D"</span>)<span class="op">;</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>      <span class="fu">triggerBase64Download</span>(</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>        <span class="vs">`data:image/png;base64,</span><span class="sc">${</span>response<span class="op">.</span><span class="at">msfrog</span><span class="sc">}</span><span class="vs">`</span><span class="op">,</span></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>        <span class="st">"msfrog"</span></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>      )<span class="op">;</span></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">catch</span> (e) {</span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>      toast<span class="op">.</span><span class="fu">error</span>(<span class="vs">`Sadge, something went wrong: </span><span class="sc">${</span>e<span class="sc">}</span><span class="vs">`</span>)<span class="op">;</span></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>    }</span></code></pre></div>
 <p>随便修改一点参数</p>
-<p><img src="/2022/08/09/corCTF-%E9%83%A8%E5%88%86web/image-20220808150746039.png" alt="image-20220808150746039"></p>
+<figure>
+<img src="image-20220808150746039.png" alt="image-20220808150746039">
+<figcaption aria-hidden="true">image-20220808150746039</figcaption>
+</figure>
 <p>根据回显 感觉type处能够执行shell</p>
-<p><img src="/2022/08/09/corCTF-%E9%83%A8%E5%88%86web/image-20220808151124578.png" alt="image-20220808151124578"></p>
+<figure>
+<img src="image-20220808151124578.png" alt="image-20220808151124578">
+<figcaption aria-hidden="true">image-20220808151124578</figcaption>
+</figure>
 <p>读取一下源码看看后端逻辑</p>
-<pre><code class="python">import os
-import json
-import subprocess
-from flask import Flask, send_from_directory, request
-
-app = Flask(__name__, static_folder='fe')
-
-
-@app.route('/api/generate', methods=['POST'])
-def generate_msfrog():
-    # Check if we received JSON
-    if not request.is_json:
-        return "I only speak JSON :c", 400
-
-    # Grab all the msfrog accessoires
-    accessoires = None
-    try:
-        accessoires = request.get_json()
-    except:
-        return "nice json", 400
-
-    if not accessoires or not isinstance(accessoires, list):
-        return ":msfrog:", 400
-
-    composites = []
-    for accessoire in accessoires:
-        if 'type' not in accessoire:
-            return "missing type lmao", 400
-
-        type = accessoire['type']
-        pos = accessoire.get('pos', None)
-        if not pos or not isinstance(pos, dict):
-            return "Ehh I need the position to supply to imagemagick", 400
-
-        x = pos.get('x', None)
-        y = pos.get('y', None)
-
-        if not isinstance(type, str):
-            return "missing type lmao", 400
-
-        # Anti haxxor check
-        if not os.path.exists("./img/" + os.path.basename(type)):
-            return "I wont pass a non existing image to a shell command lol", 400
-
-        if x is None or y is None:
-            return "Ehh I need the position to supply to imagemagick", 400
-
-        composites.append(f"img/{type} -geometry +{x}+{y} -composite")
-
-    try:
-        result = subprocess.run(
-            f"convert img/base.png {' '.join(composites)} -trim png:- | base64 -w0", capture_output=True, shell=True)
-        if result.returncode != 0 or len(result.stdout) == 0:
-            return f"Something went wrong :\n{result.stderr}", 500
-        return json.dumps({"msfrog": result.stdout.decode('utf8')})
-    except:
-        return json.dumps({"msfrog": "error"})
-
-
-@ app.route('/')
-def serve_index():
-    return send_from_directory(app.static_folder, 'index.html')
-
-
-@ app.route('/&lt;path:path&gt;')
-def serve_react(path):
-    if path != "" and os.path.exists(app.static_folder + '/' + path):
-        return send_from_directory(app.static_folder, path)
-    else:
-        return "File not found", 404
-
-
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000, threaded=True)
-</code></pre>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> json</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> subprocess</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> flask <span class="im">import</span> Flask, send_from_directory, request</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>app <span class="op">=</span> Flask(<span class="va">__name__</span>, static_folder<span class="op">=</span><span class="st">'fe'</span>)</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="at">@app.route</span>(<span class="st">'/api/generate'</span>, methods<span class="op">=</span>[<span class="st">'POST'</span>])</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> generate_msfrog():</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Check if we received JSON</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> request.is_json:</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">"I only speak JSON :c"</span>, <span class="dv">400</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Grab all the msfrog accessoires</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>    accessoires <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>        accessoires <span class="op">=</span> request.get_json()</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span>:</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">"nice json"</span>, <span class="dv">400</span></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> accessoires <span class="kw">or</span> <span class="kw">not</span> <span class="bu">isinstance</span>(accessoires, <span class="bu">list</span>):</span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">":msfrog:"</span>, <span class="dv">400</span></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>    composites <span class="op">=</span> []</span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> accessoire <span class="kw">in</span> accessoires:</span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="st">'type'</span> <span class="kw">not</span> <span class="kw">in</span> accessoire:</span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="st">"missing type lmao"</span>, <span class="dv">400</span></span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>        <span class="bu">type</span> <span class="op">=</span> accessoire[<span class="st">'type'</span>]</span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>        pos <span class="op">=</span> accessoire.get(<span class="st">'pos'</span>, <span class="va">None</span>)</span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="kw">not</span> pos <span class="kw">or</span> <span class="kw">not</span> <span class="bu">isinstance</span>(pos, <span class="bu">dict</span>):</span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="st">"Ehh I need the position to supply to imagemagick"</span>, <span class="dv">400</span></span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>        x <span class="op">=</span> pos.get(<span class="st">'x'</span>, <span class="va">None</span>)</span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>        y <span class="op">=</span> pos.get(<span class="st">'y'</span>, <span class="va">None</span>)</span>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="kw">not</span> <span class="bu">isinstance</span>(<span class="bu">type</span>, <span class="bu">str</span>):</span>
+<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="st">"missing type lmao"</span>, <span class="dv">400</span></span>
+<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Anti haxxor check</span></span>
+<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="kw">not</span> os.path.exists(<span class="st">"./img/"</span> <span class="op">+</span> os.path.basename(<span class="bu">type</span>)):</span>
+<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="st">"I wont pass a non existing image to a shell command lol"</span>, <span class="dv">400</span></span>
+<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> x <span class="kw">is</span> <span class="va">None</span> <span class="kw">or</span> y <span class="kw">is</span> <span class="va">None</span>:</span>
+<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="st">"Ehh I need the position to supply to imagemagick"</span>, <span class="dv">400</span></span>
+<span id="cb3-47"><a href="#cb3-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a>        composites.append(<span class="ss">f"img/</span><span class="sc">{</span><span class="bu">type</span><span class="sc">}</span><span class="ss"> -geometry +</span><span class="sc">{</span>x<span class="sc">}</span><span class="ss">+</span><span class="sc">{</span>y<span class="sc">}</span><span class="ss"> -composite"</span>)</span>
+<span id="cb3-49"><a href="#cb3-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-50"><a href="#cb3-50" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
+<span id="cb3-51"><a href="#cb3-51" aria-hidden="true" tabindex="-1"></a>        result <span class="op">=</span> subprocess.run(</span>
+<span id="cb3-52"><a href="#cb3-52" aria-hidden="true" tabindex="-1"></a>            <span class="ss">f"convert img/base.png </span><span class="sc">{</span><span class="st">' '</span><span class="sc">.</span>join(composites)<span class="sc">}</span><span class="ss"> -trim png:- | base64 -w0"</span>, capture_output<span class="op">=</span><span class="va">True</span>, shell<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb3-53"><a href="#cb3-53" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> result.returncode <span class="op">!=</span> <span class="dv">0</span> <span class="kw">or</span> <span class="bu">len</span>(result.stdout) <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb3-54"><a href="#cb3-54" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="ss">f"Something went wrong :</span><span class="ch">\n</span><span class="sc">{</span>result<span class="sc">.</span>stderr<span class="sc">}</span><span class="ss">"</span>, <span class="dv">500</span></span>
+<span id="cb3-55"><a href="#cb3-55" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> json.dumps({<span class="st">"msfrog"</span>: result.stdout.decode(<span class="st">'utf8'</span>)})</span>
+<span id="cb3-56"><a href="#cb3-56" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span>:</span>
+<span id="cb3-57"><a href="#cb3-57" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> json.dumps({<span class="st">"msfrog"</span>: <span class="st">"error"</span>})</span>
+<span id="cb3-58"><a href="#cb3-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-59"><a href="#cb3-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-60"><a href="#cb3-60" aria-hidden="true" tabindex="-1"></a><span class="op">@</span> app.route(<span class="st">'/'</span>)</span>
+<span id="cb3-61"><a href="#cb3-61" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> serve_index():</span>
+<span id="cb3-62"><a href="#cb3-62" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> send_from_directory(app.static_folder, <span class="st">'index.html'</span>)</span>
+<span id="cb3-63"><a href="#cb3-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-64"><a href="#cb3-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-65"><a href="#cb3-65" aria-hidden="true" tabindex="-1"></a><span class="op">@</span> app.route(<span class="st">'/&lt;path:path&gt;'</span>)</span>
+<span id="cb3-66"><a href="#cb3-66" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> serve_react(path):</span>
+<span id="cb3-67"><a href="#cb3-67" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> path <span class="op">!=</span> <span class="st">""</span> <span class="kw">and</span> os.path.exists(app.static_folder <span class="op">+</span> <span class="st">'/'</span> <span class="op">+</span> path):</span>
+<span id="cb3-68"><a href="#cb3-68" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> send_from_directory(app.static_folder, path)</span>
+<span id="cb3-69"><a href="#cb3-69" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb3-70"><a href="#cb3-70" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">"File not found"</span>, <span class="dv">404</span></span>
+<span id="cb3-71"><a href="#cb3-71" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-72"><a href="#cb3-72" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-73"><a href="#cb3-73" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">'__main__'</span>:</span>
+<span id="cb3-74"><a href="#cb3-74" aria-hidden="true" tabindex="-1"></a>    app.run(host<span class="op">=</span><span class="st">'0.0.0.0'</span>, port<span class="op">=</span><span class="dv">5000</span>, threaded<span class="op">=</span><span class="va">True</span>)</span></code></pre></div>
 <p>根据代码 会产生命令注入的问题</p>
 <p><code>convert img/base.png img/;whoami;/mstongue.png -geometry +157+128 -composite -trim png:- | base64 -w0</code></p>
 <p>原理大体就是这样，然后<code>/mstongue.png</code>拼接回去<code>./img/mstongue.png</code></p>
 <p>也能通过</p>
-<pre><code class="python">        if not os.path.exists("./img/" + os.path.basename(type)):
-            return "I wont pass a non existing image to a shell command lol", 400
-</code></pre>
-<h2 id="simple-waf"><a href="#simple-waf" class="headerlink" title="simple waf"></a>simple waf</h2><p>nodejs</p>
-<pre><code class="js">const express = require("express");
-const fs = require("fs");
-
-const app = express();
-
-const PORT = process.env.PORT || 3456;
-
-app.use((req, res, next) =&gt; {
-    if([req.body, req.headers, req.query].some(
-        (item) =&gt; item &amp;&amp; JSON.stringify(item).includes("flag")
-    )) {
-        return res.send("bad hacker!");
-    }
-    next();
-});
-
-app.get("/", (req, res) =&gt; {
-    try {
-        res.setHeader("Content-Type", "text/html");
-        res.send(fs.readFileSync(req.query.file || "index.html").toString());       
-    }
-    catch(err) {
-        console.log(err);
-        res.status(500).send("Internal server error");
-    }
-});
-
-app.listen(PORT, () =&gt; console.log(`web/simplewaf listening on port ${PORT}`));
-</code></pre>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="kw">not</span> os.path.exists(<span class="st">"./img/"</span> <span class="op">+</span> os.path.basename(<span class="bu">type</span>)):</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="st">"I wont pass a non existing image to a shell command lol"</span>, <span class="dv">400</span></span></code></pre></div>
+<h2 id="simple-waf">simple waf</h2>
+<p>nodejs</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> express <span class="op">=</span> <span class="pp">require</span>(<span class="st">"express"</span>)<span class="op">;</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> fs <span class="op">=</span> <span class="pp">require</span>(<span class="st">"fs"</span>)<span class="op">;</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> app <span class="op">=</span> <span class="fu">express</span>()<span class="op">;</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> PORT <span class="op">=</span> <span class="bu">process</span><span class="op">.</span><span class="at">env</span><span class="op">.</span><span class="at">PORT</span> <span class="op">||</span> <span class="dv">3456</span><span class="op">;</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>app<span class="op">.</span><span class="fu">use</span>((req<span class="op">,</span> res<span class="op">,</span> next) <span class="kw">=&gt;</span> {</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>([req<span class="op">.</span><span class="at">body</span><span class="op">,</span> req<span class="op">.</span><span class="at">headers</span><span class="op">,</span> req<span class="op">.</span><span class="at">query</span>]<span class="op">.</span><span class="fu">some</span>(</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>        (item) <span class="kw">=&gt;</span> item <span class="op">&amp;&amp;</span> <span class="bu">JSON</span><span class="op">.</span><span class="fu">stringify</span>(item)<span class="op">.</span><span class="fu">includes</span>(<span class="st">"flag"</span>)</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    )) {</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> res<span class="op">.</span><span class="fu">send</span>(<span class="st">"bad hacker!"</span>)<span class="op">;</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">next</span>()<span class="op">;</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>app<span class="op">.</span><span class="fu">get</span>(<span class="st">"/"</span><span class="op">,</span> (req<span class="op">,</span> res) <span class="kw">=&gt;</span> {</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span> {</span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>        res<span class="op">.</span><span class="fu">setHeader</span>(<span class="st">"Content-Type"</span><span class="op">,</span> <span class="st">"text/html"</span>)<span class="op">;</span></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>        res<span class="op">.</span><span class="fu">send</span>(fs<span class="op">.</span><span class="fu">readFileSync</span>(req<span class="op">.</span><span class="at">query</span><span class="op">.</span><span class="at">file</span> <span class="op">||</span> <span class="st">"index.html"</span>)<span class="op">.</span><span class="fu">toString</span>())<span class="op">;</span>       </span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>    <span class="cf">catch</span>(err) {</span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>        <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(err)<span class="op">;</span></span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>        res<span class="op">.</span><span class="fu">status</span>(<span class="dv">500</span>)<span class="op">.</span><span class="fu">send</span>(<span class="st">"Internal server error"</span>)<span class="op">;</span></span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span></span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>app<span class="op">.</span><span class="fu">listen</span>(PORT<span class="op">,</span> () <span class="kw">=&gt;</span> <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="vs">`web/simplewaf listening on port </span><span class="sc">${</span>PORT<span class="sc">}</span><span class="vs">`</span>))<span class="op">;</span></span></code></pre></div>
 <p>fs.readFileSync文件读取 绕过flag关键词</p>
 <p>比赛期间没出</p>
-<p><img src="/2022/08/09/corCTF-%E9%83%A8%E5%88%86web/image-20220808171731792.png" alt="image-20220808171731792"></p>
+<figure>
+<img src="image-20220808171731792.png" alt="image-20220808171731792">
+<figcaption aria-hidden="true">image-20220808171731792</figcaption>
+</figure>
 <p>可以看到readFileSync可以在URL类使用file协议</p>
 <p>本地测试一下</p>
-<p><img src="/2022/08/09/corCTF-%E9%83%A8%E5%88%86web/image-20220809123946637.png" alt="image-20220809123946637"></p>
+<figure>
+<img src="image-20220809123946637.png" alt="image-20220809123946637">
+<figcaption aria-hidden="true">image-20220809123946637</figcaption>
+</figure>
 <p>对URL类会自行urldecode一次，所以可以通过这个bypass关键词</p>
 <p>然后问题来了 如何构造解析成URL类并且使用file协议解析呢</p>
 <p>一步步调试可以看到验证了是否是url类</p>
-<p><img src="/2022/08/09/corCTF-%E9%83%A8%E5%88%86web/image-20220808165220888.png" alt="image-20220808165220888"></p>
+<figure>
+<img src="image-20220808165220888.png" alt="image-20220808165220888">
+<figcaption aria-hidden="true">image-20220808165220888</figcaption>
+</figure>
 <p>去查看fs的源码（题目环境是v18.1.0，那就下载v18.x分支源码）</p>
 <p><code>git clone -b v18.x https://github.com/nodejs/node.git</code></p>
-<p><img src="/2022/08/09/corCTF-%E9%83%A8%E5%88%86web/image-20220809125911997.png" alt="image-20220809125911997"></p>
-<p><img src="/2022/08/09/corCTF-%E9%83%A8%E5%88%86web/image-20220809125942940.png" alt="image-20220809125942940"></p>
-<p><img src="/2022/08/09/corCTF-%E9%83%A8%E5%88%86web/image-20220809130010778.png" alt="image-20220809130010778"></p>
-<ol>
+<figure>
+<img src="image-20220809125911997.png" alt="image-20220809125911997">
+<figcaption aria-hidden="true">image-20220809125911997</figcaption>
+</figure>
+<figure>
+<img src="image-20220809125942940.png" alt="image-20220809125942940">
+<figcaption aria-hidden="true">image-20220809125942940</figcaption>
+</figure>
+<figure>
+<img src="image-20220809130010778.png" alt="image-20220809130010778">
+<figcaption aria-hidden="true">image-20220809130010778</figcaption>
+</figure>
+<ol type="1">
 <li><code>fileURLOrPath</code>不为null</li>
 <li><code>href</code>属性不为空</li>
 <li><code>origin</code>属性不为空</li>
 </ol>
 <p>check过了然后<code>return fileURLToPath(fileURLOrPath)</code></p>
-<p><img src="/2022/08/09/corCTF-%E9%83%A8%E5%88%86web/image-20220809130215847.png" alt="image-20220809130215847"></p>
-<ol start="4">
-<li><p><code>typeof path === 'string'</code></p>
-</li>
-<li><p><code>protocol === file:</code></p>
-</li>
+<figure>
+<img src="image-20220809130215847.png" alt="image-20220809130215847">
+<figcaption aria-hidden="true">image-20220809130215847</figcaption>
+</figure>
+<ol start="4" type="1">
+<li><p><code>typeof path === 'string'</code></p></li>
+<li><p><code>protocol === file:</code></p></li>
 </ol>
 <p>服务器为linux，所以会触发<code>getPathFromURLPosix</code></p>
-<p><img src="/2022/08/09/corCTF-%E9%83%A8%E5%88%86web/image-20220809130441457.png" alt="image-20220809130441457"></p>
-<ol start="6">
+<figure>
+<img src="image-20220809130441457.png" alt="image-20220809130441457">
+<figcaption aria-hidden="true">image-20220809130441457</figcaption>
+</figure>
+<ol start="6" type="1">
 <li><code>hostname === ''</code></li>
 </ol>
 <p>然后pathname则为文件名</p>
 <p>此外最关键的是如何传参解析呢</p>
 <p>?file[a]=b&amp;file[c]=d</p>
-<p>在express的req.query.file下会变成{“a”: “b”, “c”: “d”}</p>
+<p>在express的req.query.file下会变成{"a": "b", "c": "d"}</p>
 <p>所以我们只需要传参<code>?file[href]=x&amp;file[origin]=x&amp;file[protocol]=file:&amp;file[hostname]=&amp;file[pathname]=/app/fl%2561g.txt</code></p>
-<p>两次url编码是因为在传参时会自解码一次:D) 可以在自己本地debug时候docker log很容易发现这件事</p>
-<p><img src="/2022/08/09/corCTF-%E9%83%A8%E5%88%86web/image-20220809131535944.png" alt="image-20220809131535944"></p>
+<p>两次url编码是因为在传参时会自解码一次:D)
+可以在自己本地debug时候docker log很容易发现这件事</p>
+<figure>
+<img src="image-20220809131535944.png" alt="image-20220809131535944">
+<figcaption aria-hidden="true">image-20220809131535944</figcaption>
+</figure>
 </article><section class="jump-container is-flex is-justify-content-space-between my-6"><!-- em is empty placeholder--><a class="button is-default" href="/2022/11/16/paper-day1-DEPIMPACT/" title="paper_day1_DEPIMPACT"><i class="iconfont icon-prev mr-2 has-text-grey"></i><span class="has-text-weight-semibold">上一页: paper_day1_DEPIMPACT</span></a></section></div></div></main></main><footer class="is-flex is-flex-direction-column is-align-items-center is-flex-shrink-0 is-family-serif"><section class="sns-container"><!-- Github--><a title="github" target="_blank" rel="noopener nofollow" href="//github.com/WyHlj"><i class="iconfont icon-github"></i></a><!-- Ins--><!-- RSS--><a title="rss" target="_blank" rel="noopener nofollow" href="/atom.xml"><i class="iconfont icon-rss"></i></a><!-- 知乎--><a title="zhihu" target="_blank" rel="noopener nofollow" href="//zhihu.com/people/mr-wang-48-31-27"><i class="iconfont icon-zhihu"></i></a><!-- 领英--><!-- 脸书--></section><p><span>Copyright ©</span><span> fl3cha2o 2022</span></p><div><span></span></div></footer><script async defer src="https://buttons.github.io/buttons.js"></script><script src="/js/post.js"></script></body></html>
